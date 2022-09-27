@@ -1,1 +1,89 @@
-# Assignment-2
+# Assignment 2: Car Soccer
+
+**Due: Monday, October 10, 11:59pm CDT**
+
+This purpose of this assignment is to create a simple, fun 3D soccer game loosely inspired by the 2015 game [*Rocket League*](http://rocketleague.psyonix.com/). This program covers a number of important computer graphics concepts.  You will learn to:
+
+- Use TypeScript and GopherGfx to build a 3D graphics program
+- Draw simple 3D geometric objects
+- Work effectively with 3D points, vectors, and geometric transformations
+- Balance the tradeoffs between realism and effective game play by simulating physics in a "plausible" but not necessarily 100% realistic way
+- Successfully program your first interactive 3D graphics game!
+
+You can try a [finished version of the game](https://csci-4611-fall-2022.github.io/Builds/Assignment-2/) in the Builds repository on the course GitHub. This is only a representative example, and you do not need to make your game look or play exactly the same. Your program can have a different look and feel, so long as it satisfies the requirements specified in the rubric.
+
+## Submission Information
+
+You should fill out this information before submitting your assignment. Make sure to document the name and source of any third party assets that you added, such as models, images, sounds, or any other content used that was not solely written by you. 
+
+Name:
+
+Third Party Assets:
+
+Wizard Bonus Functionality:
+
+## Prerequisites
+
+To work with this code, you will first need to install [Node.js 16.17.0 LTS](https://nodejs.org/) and [Visual Studio Code](https://code.visualstudio.com/). 
+
+## Getting Started
+
+The starter code implements the general structure that we reviewed in lecture.  After cloning your repository, you will need to set up the initial project by pulling the dependencies from the node package manager with:
+
+```
+npm install
+```
+
+This will create a `node_modules` folder in your directory and download all the dependencies needed to run the project.  Note that this folder is `.gitignore` file and should not be committed to your repository.  After that, you can compile and run a server with:
+
+```
+npm run start
+```
+
+Webpack should launch your program in a web browser automatically.  If not, you can run it by pointing your browser at `http://localhost:8080`.
+
+## Rubric
+
+Graded out of 20 points.
+
+## Wizard Bonus Challenge
+
+All of the assignments in the course will include great opportunities for students to go beyond the requirements of the assignment and do cool extra work. On each assignment, you can earn **one bonus point** for implementing a meaningful new feature to your program. This should involve some original new programming, and should not just be something that can be quickly implemented by copying and slightly modifying existing code.  
+
+There are some great opportunities for extra work in this assignment that can turn this program into a more exciting game.  Some examples include:
+
+- Add some wheels and brake lights to your car!
+-  Change the camera position to follow the car or point to the ball!
+- Add a car for a second player!
+- Draw some fireworks when a goal is scored before resetting the ball!
+- Keep count of the score by drawing some tokens or text on the screen!
+- Or, even better, think of your own cool, creative idea!
+
+A single point may not sound like a lot, but keep in mind that on a 20-point scale, this is equivalent to a 5% bonus! Make sure to document your wizard functionality in the Submission Information portion of this readme file, so that the TAs know what to look for when they grade your program.
+
+The wizard bonus challenge also offers you a chance to show off your skills and creativity!  While grading the assignments the TAs will identify the best four or five examples of people doing cool stuff with computer graphics. We call these students our **wizards**, and after each assignment, the students selected as wizards will have their programs demonstrated to the class.
+
+## Submission
+
+When you commit and push your assignment to GitHub, an automated script will build and deploy the production code to the `gh-pages` branch of your repository.  However, your submission is not complete until you do the following:
+
+1. Open your repository on GitHub and go to Settings->Pages.
+2. Change the source to the `gh-pages` branch, then save.
+
+You will need to wait a few minutes for the website to deploy.  After that, make sure to test everything by pointing your web browser at the link generated for your build:
+
+```
+https://csci-4611-fall-2022.github.io/your-repo-name-here
+```
+
+If your program runs correctly, then you are finished!  The published build will indicate to the TAs that your assignment is ready for grading.  If you change your mind and want to make further changes to your code, then just set the GitHub pages source back to `None` and it will unpublish the website.
+
+Note that the published JavaScript bundle code generated by the TypeScript compiler has been minified and obfuscated so that it is not human-readable. So, you can feel free to send this link to other students, friends, and family to show off your work!
+
+## Acknowledgments
+
+This assignment was based on content from CSCI 4611 Fall 2021 by [Daniel Keefe](https://www.danielkeefe.net/).
+
+## License
+
+Material for [CSCI 4611 Fall 2022](https://csci-4611-fall-2022.github.io/) by [Evan Suma Rosenberg](https://illusioneering.umn.edu/) is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
