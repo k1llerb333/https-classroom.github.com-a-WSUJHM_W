@@ -1,3 +1,13 @@
+/* Assignment 2: Car Soccer
+ * CSCI 4611, Fall 2022, University of Minnesota
+ * Instructor: Evan Suma Rosenberg <suma@umn.edu>
+ * License: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+ */ 
+
+// You do not need to change existing code in this class.  However, you may need to 
+// add additional code that extends this class to complete the assignment.
+// You are also free to modify the existing code if you want.
+
 import * as gfx from 'gophergfx'
 
 export class Car extends gfx.BoxMesh

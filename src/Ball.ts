@@ -1,3 +1,13 @@
+/* Assignment 2: Car Soccer
+ * CSCI 4611, Fall 2022, University of Minnesota
+ * Instructor: Evan Suma Rosenberg <suma@umn.edu>
+ * License: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+ */ 
+
+// You do not need to change existing code in this class.  However, you may need to 
+// add additional code that extends this class to complete the assignment.
+// You are also free to modify the existing code if you want.
+
 import * as gfx from 'gophergfx'
 
 export class Ball extends gfx.SphereMesh
@@ -39,11 +49,20 @@ export class Ball extends gfx.SphereMesh
 
     update(deltaTime: number): void
     {
-        // Add your code here
+        // p' = p + v * dt
+        this.position.x += this.velocity.x * deltaTime;
+        this.position.y += this.velocity.y * deltaTime;
+        this.position.z += this.velocity.z * deltaTime;
+
+        // Update the shadow position so that it is always on the ground
+        // directly underneath the ball.
+        this.shadow.position.y = -this.position.y + 0.005;
     }
 
     reset()
     {
-       // Add your code here
+       // Reset the ball to its initial position
+       this.position.set(0, this.radius/2, 0);
+       this.shadow.position.y = -this.position.y + 0.005;
     }
 }

@@ -78,6 +78,16 @@ export class CarSoccer extends gfx.GfxApp
         // Add the ball to the scene
         this.ball.reset();
         this.scene.add(this.ball);
+
+
+        // PART 1: 3D DRAWING
+        // You should add code here to draw the 3D boundaries of the pitch
+        // and a grid of boxes that form the "net" for each goal.
+
+
+        // ADD PART 1 CODE HERE
+
+
     }
 
     update(deltaTime: number): void 
@@ -122,8 +132,68 @@ export class CarSoccer extends gfx.GfxApp
             this.car.forwardSpeed = gfx.MathUtils.clamp(this.car.forwardSpeed, -carMaxSpeed, carMaxSpeed);
         }
 
-        // Update the car's velocity and position
+
+        // PART 2: CAR DRIVING
+        // You should add code here to implement car-like steering.  You will likely
+        // also need to make some additions to the Car class.  You do not need to
+        // modify any of the code related to forward movement.
+
+        
+        // ADD PART 2 CODE HERE
+
+
+        // Update the car's velocity and position based on its forward speed
         this.car.update(deltaTime);
+
+
+
+        // PART 3: BALL PHYSICS
+        // This code defines the gravity and friction parameters used in the
+        // instructor's example implementation.  You can feel free to change
+        // them if you want to adjust your game mechanics and difficulty.
+        // Note that these constants are already multiplied by deltaTime,
+        // so they correspond to the movement in this frame only.
+
+        // The gravity constant should be continuously applied each frame
+        const gravity = -20 * deltaTime;
+
+        // The friction constant should be applied when the ball collides
+        // with the ground, walls, or ceiling boundaries to slow it down
+        let frictionSlowDown = 1 - deltaTime / 0.08;
+        frictionSlowDown = gfx.MathUtils.clamp(frictionSlowDown,  0, 1);
+
+
+        // ADD PART 3 CODE HERE
+
+
+        // After you change the ball's velocity, this method needs to be
+        // called to compute its updated position.
+        this.ball.update(deltaTime);
+
+
+
+        // PART 4: BALL-GOAL INTERSECTIONS
+        // If the ball enters a goal, then reset both the car and ball.
+        // Note that a sphere is not a good representation of the rectangular
+        // goal, so if you decide to use a built-in intersection test, you
+        // should use axis-aligned bounding boxes and not bounding spheres.
+        
+
+        // ADD YOUR CODE HERE
+
+
+
+        // PART 5: CAR-BALL COLLISIONS
+        // This is the most challenging part of this assignment.  Make sure
+        // to read all the information described in the README.  If you are
+        // struggling with understanding the math or have questions about
+        // how to implement the equations, then you should seek help from
+        // the instructor or TA. 
+
+
+        // ADD YOUR CODE HERE
+
+
     }
 
     // Set the x or y components of the input vector when either
