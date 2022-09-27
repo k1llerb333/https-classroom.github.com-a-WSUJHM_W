@@ -76,8 +76,9 @@ Graded out of 20 points.  Note that many of these steps are described in greater
 
 #### Part 2: Car Driving
 
-- Currently, the car moves forwards and backwards, but cannot turn.  Add left/right steering as described below in the section on the car driving model.  (2)
-- When the user steers the car left or right, the turn rate should be proportional to its forward movement speed. You cannot turn a car if it is not moving! (2)
+- Currently, the car moves forwards and backwards, but cannot turn.  Add left and right steering according to the car driving model described in the section below.  (1)
+- When the user steers the car left or right, the turn rate should be proportional to its forward movement speed. (1)
+- Prevent the car from leaving the boundaries of the playing area. (2)
 
 #### Part 3: Ball Physics
 

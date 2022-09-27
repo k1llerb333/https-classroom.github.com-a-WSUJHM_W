@@ -96,9 +96,31 @@ export class CarSoccer extends gfx.GfxApp
         const carMaxSpeed = 80;
         const carAcceleration = 80;
 
+        // The gravity constant should be continuously applied each frame
+        const gravity = -20 * deltaTime;
+
+        // The friction constant should be applied when the ball collides
+        // with the ground, walls, or ceiling boundaries to slow it down
+        let frictionSlowDown = 1 - deltaTime / 0.08;
+        frictionSlowDown = gfx.MathUtils.clamp(frictionSlowDown,  0, 1);
+
+
+
+        // Accelerate the car based on the user input vector
+        if(this.inputVector.y != 0)
+        {
+            // The input vector controls the direction and the
+            // speed is determined by the acceleration constant
+            // multiplied by deltaTime
+            this.car.forwardSpeed += carAcceleration * deltaTime * -this.inputVector.y;
+            
+            // The clamp() convenience function makes sure that
+            // the speed never exceeds the min or max limit
+            this.car.forwardSpeed = gfx.MathUtils.clamp(this.car.forwardSpeed, -carMaxSpeed, carMaxSpeed);
+        }
         // If the user is not pressing forward or backward
         // then decelerate the car due to friction
-        if(this.inputVector.y == 0)
+        else
         {
             // If the car is moving forward, then the speed should decrease.
             if(this.car.forwardSpeed > 0)
@@ -118,18 +140,6 @@ export class CarSoccer extends gfx.GfxApp
                 if(this.car.forwardSpeed > -0.01)
                     this.car.forwardSpeed = 0;
             }
-        }
-        // Accelerate the car based on the user input vector
-        else
-        {
-            // The input vector controls the direction and the
-            // speed is determined by the acceleration constant
-            // multiplied by deltaTime
-            this.car.forwardSpeed += carAcceleration * deltaTime * -this.inputVector.y;
-            
-            // The clamp() convenience function makes sure that
-            // the speed never exceeds the min or max limit
-            this.car.forwardSpeed = gfx.MathUtils.clamp(this.car.forwardSpeed, -carMaxSpeed, carMaxSpeed);
         }
 
 
@@ -153,14 +163,6 @@ export class CarSoccer extends gfx.GfxApp
         // them if you want to adjust your game mechanics and difficulty.
         // Note that these constants are already multiplied by deltaTime,
         // so they correspond to the movement in this frame only.
-
-        // The gravity constant should be continuously applied each frame
-        const gravity = -20 * deltaTime;
-
-        // The friction constant should be applied when the ball collides
-        // with the ground, walls, or ceiling boundaries to slow it down
-        let frictionSlowDown = 1 - deltaTime / 0.08;
-        frictionSlowDown = gfx.MathUtils.clamp(frictionSlowDown,  0, 1);
 
 
         // ADD PART 3 CODE HERE
