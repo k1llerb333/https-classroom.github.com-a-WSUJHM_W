@@ -145,8 +145,7 @@ export class CarSoccer extends gfx.GfxApp
 
         // PART 2: CAR DRIVING
         // You should add code here to implement car-like steering.  You will likely
-        // also need to make some additions to the Car class.  You do not need to
-        // modify any of the code related to forward movement.
+        // also need to extend the movement code in the Car class to account for rotation.
 
         
         // ADD PART 2 CODE HERE

@@ -23,8 +23,8 @@ export class Ball extends gfx.SphereMesh
         // Initialize member variables
         this.velocity = new gfx.Vector3();
 
-        // Set the initial position so the bottom edge is touching the ground
-        this.position.y = radius/2;
+        // Set the initial position so the bottom edge is a meter above the ground
+        this.position.y = radius/2 + 1;
 
         // Set the material color
         const ballMaterial = new gfx.GouraudMaterial();
@@ -44,7 +44,6 @@ export class Ball extends gfx.SphereMesh
         const shadowMaterial = new gfx.UnlitMaterial();
         shadowMaterial.color.set(0, 0, 0, 0.5);
         this.shadow.material = shadowMaterial;
-
     }
 
     update(deltaTime: number): void
