@@ -5,6 +5,7 @@
  */ 
 
 import * as gfx from 'gophergfx'
+import { BoxMesh, Vector3 } from 'gophergfx';
 import { Ball } from './Ball';
 import { Car } from './Car';
 
@@ -13,16 +14,24 @@ export class CarSoccer extends gfx.GfxApp
     private car: Car;
     private ball: Ball;
     private inputVector: gfx.Vector2;
-
+    private goal1: gfx.Transform3;
+    private goal2: gfx.Transform3;
+    private goalcheck1: gfx.Transform3;
     constructor()
     {
+
+
         // Call the base class constructor
         super();
 
         // Initialize member variables
+        this.goal1 = new gfx.Transform3();
+        this.goal2 = new gfx.Transform3();
+        this.goalcheck1 = new gfx.Transform3;
         this.car = new Car(4.5, 4.5, 5.5);
         this.ball = new Ball(2.6);
         this.inputVector = new gfx.Vector2();
+        
     }
 
     createScene(): void 
@@ -76,7 +85,7 @@ export class CarSoccer extends gfx.GfxApp
         this.scene.add(this.car);
 
         // Add the ball to the scene
-        this.ball.reset();
+        
         this.scene.add(this.ball);
 
 
@@ -85,7 +94,123 @@ export class CarSoccer extends gfx.GfxApp
         // and a grid of boxes that form the "net" for each goal.
 
 
+        const vectorfield = new gfx.BoundingBox3
+        vectorfield.min = new gfx.Vector3(-40,0,50);
+        vectorfield.max = new gfx.Vector3(40,35,-50);
+        const LInes = new gfx.Line3;
+        LInes.createFromBox(vectorfield);
+        this.scene.add(LInes);
         // ADD PART 1 CODE HERE
+
+        const goal = new gfx.BoxMesh(1,1,1);
+        const start1 = new gfx.Vector3(-10,0,50);
+        const end = new gfx.Vector3(10,0,50);
+        const thickness = 0.4;
+
+        const start2 = new gfx.Vector3(-10,2,50);
+        const end2 = new gfx.Vector3(10,2,50);
+
+        const start3 = new Vector3(10,4,50);
+        const end3 = new Vector3(-10,4,50);
+
+        const start4 = new Vector3(10,6,50);
+        const end4 = new Vector3(-10,6,50);
+
+        const startv1 = new Vector3(-10,5,50);
+        const endv1 = new Vector3(-10,-10,50);
+
+        const startv2 = new Vector3(-5,5,50);
+        const endv2 = new Vector3(-5,-5,50);
+
+        const startv3 = new Vector3(0,5,50);
+        const endv3 = new Vector3(0,-5,50);
+
+        const startv4 = new Vector3(5,5,50);
+        const endv4 = new Vector3(5,-5,50);
+
+        const startv5 = new Vector3(10,5,50);
+        const endv5 = new Vector3(10,-5,50);
+
+
+        goal.setLine(start1, end, thickness);
+        this.goal1.add(new gfx.MeshInstance(goal));
+        goal.setLine(start2,end2,thickness);
+        this.goal1.add(new gfx.MeshInstance(goal));
+        goal.setLine(start3,end3,thickness);
+        this.goal1.add(new gfx.MeshInstance(goal));
+        goal.setLine(start4,end4,thickness);
+        this.goal1.add(new gfx.MeshInstance(goal));
+        
+        goal.setLine(startv1, endv1, thickness);
+        this.goal1.add(new gfx.MeshInstance(goal));
+        goal.setLine(startv2, endv2, thickness);
+        this.goal1.add(new gfx.MeshInstance(goal));
+        goal.setLine(startv3, endv3, thickness);
+        this.goal1.add(new gfx.MeshInstance(goal));
+        goal.setLine(startv4, endv4, thickness);
+        this.goal1.add(new gfx.MeshInstance(goal));
+        goal.setLine(startv5, endv5, thickness);
+        this.goal1.add(new gfx.MeshInstance(goal));
+
+        this.scene.add(this.goal1);
+
+
+
+        
+        const g2start1 = new gfx.Vector3(-10,0,-50);
+        const g2end1 = new gfx.Vector3(-10,0,-50)
+
+        
+        const g2start2 = new gfx.Vector3(-10,2,-50);
+        const g2end2 = new gfx.Vector3(10,2,-50);
+
+        const g2start3 = new Vector3(10,4,-50);
+        const g2end3 = new Vector3(-10,4,-50);
+
+        const g2start4 = new Vector3(10,6,-50);
+        const g2end4 = new Vector3(-10,6,-50);
+
+        
+
+        const g2startv1 = new Vector3(-10,5,-50);
+        const g2endv1 = new Vector3(-10,-10,-50);
+
+        const g2startv2 = new Vector3(-5,5,-50);
+        const g2endv2 = new Vector3(-5,-5,-50);
+
+        const g2startv3 = new Vector3(0,5,-50);
+        const g2endv3 = new Vector3(0,-5,-50);
+
+        const g2startv4 = new Vector3(5,5,-50);
+        const g2endv4 = new Vector3(5,-5,-50);
+
+        const g2startv5 = new Vector3(10,5,-50);
+        const g2endv5 = new Vector3(10,-5,-50);
+
+        goal.setLine(g2start1, g2end1, thickness);
+        this.goal2.add(new gfx.MeshInstance(goal));
+        goal.setLine(g2start2,g2end2,thickness);
+        this.goal2.add(new gfx.MeshInstance(goal));
+        goal.setLine(g2start3,g2end3,thickness);
+        this.goal2.add(new gfx.MeshInstance(goal));
+        goal.setLine(g2start4,g2end4,thickness);
+        this.goal2.add(new gfx.MeshInstance(goal));
+        
+        goal.setLine(g2startv1, g2endv1, thickness);
+        this.goal2.add(new gfx.MeshInstance(goal));
+        goal.setLine(g2startv2, g2endv2, thickness);
+        this.goal2.add(new gfx.MeshInstance(goal));
+        goal.setLine(g2startv3, g2endv3, thickness);
+        this.goal2.add(new gfx.MeshInstance(goal));
+        goal.setLine(g2startv4, g2endv4, thickness);
+        this.goal2.add(new gfx.MeshInstance(goal));
+        goal.setLine(g2startv5, g2endv5, thickness);
+        this.goal2.add(new gfx.MeshInstance(goal));
+        this.scene.add(this.goal2);
+
+
+
+
 
 
     }
@@ -146,10 +271,15 @@ export class CarSoccer extends gfx.GfxApp
         // PART 2: CAR DRIVING
         // You should add code here to implement car-like steering.  You will likely
         // also need to extend the movement code in the Car class to account for rotation.
+        if(this.inputVector.x !=0){
+            this.car.turnS = (this.car.forwardSpeed * this.inputVector.x * deltaTime)/16; 
 
-        
+        }else{
+            this.car.turnS = 0;
+        }
+
         // ADD PART 2 CODE HERE
-
+        
 
         // Update the car's velocity and position based on its forward speed
         this.car.update(deltaTime);
@@ -165,23 +295,87 @@ export class CarSoccer extends gfx.GfxApp
 
 
         // ADD PART 3 CODE HERE
+       
+        
+        
+        
+        //this.ball.velocity.add(new gfx.Vector3(0,gravity,0));
+        
+        const adjust = 1;
+        if( this.ball.position.y > (35 - this.ball.radius)){
+            const adjust = 0.5;
+            
+            this.ball.position.y = 35 - this.ball.radius/2 + adjust;
+            this.ball.velocity.y =  this.ball.position.y * -adjust ;
+            
+        }
+        else if (this.ball.position.y <  this.ball.radius + adjust ){
+            const adjust = 0.5;
+            this.ball.position.y = this.ball.radius/2 + 1;
+            this.ball.velocity.y = this.ball.radius * adjust;
+            this.ball.velocity.y = this.ball.position.y * -adjust;
+            
+        }else{
+            const adjust = 0.8;
+            this.ball.velocity.y += gravity *adjust;
+        }
 
 
+        if ( this.ball.position.x > 40 - this.ball.radius ){
+            const adjust = 1.3;
+            this.ball.position.x = this.ball.radius/2 + 1;
+            this.ball.velocity.x = this.ball.velocity.x * -adjust;
+            //this.ball.velocity.multiplyScalar((frictionSlowDown/adjust) * 2);
+            
+        }else if (this.ball.position.x > -40 - this.ball.radius){
+            const adjust = 1.3;
+            this.ball.position.x = this.ball.radius/2 + 1;
+            this.ball.velocity.x =  this.ball.velocity.x * -adjust;
+            //this.ball.velocity.multiplyScalar((frictionSlowDown/adjust) * 2);
+            
+        }
+        if (this.ball.position.z > 50 - this.ball.radius){
+            const adjust = 1.3;
+            this.ball.position.z = this.ball.radius/2 + 1;
+            this.ball.velocity.z = this.ball.velocity.z * -adjust;
+            //this.ball.velocity.multiplyScalar((frictionSlowDown/adjust) * 2);
+        }
+        else if ( this.ball.position.z > -50 + this.ball.radius){
+            const adjust = 1.3;
+            this.ball.position.z = this.ball.radius/2 + 1;
+            this.ball.velocity.z = this.ball.velocity.z * -adjust;
+            //this.ball.velocity.multiplyScalar((frictionSlowDown/adjust) * 2);
+        }
+
+
+
+       
+
+        
         // After you change the ball's velocity, this method needs to be
         // called to compute its updated position.
         this.ball.update(deltaTime);
+         
 
 
 
         // PART 4: BALL-GOAL INTERSECTIONS
-        // If the ball enters a goal, then reset both the car and ball.
+        // If the ball enters a goal, then rtheset both the car and ball.
         // Note that a sphere is not a good representation of the rectangular
         // goal, so if you decide to use a built-in intersection test, you
         // should use axis-aligned bounding boxes and not bounding spheres.
         
 
         // ADD YOUR CODE HERE
-
+        if (this.ball.intersects(this.goal1, gfx.IntersectionMode3.AXIS_ALIGNED_BOUNDING_BOX)){
+            this.car.reset();
+            this.ball.reset();
+        }
+        if (this.ball.intersects(this.goal2, gfx.IntersectionMode3.AXIS_ALIGNED_BOUNDING_BOX)){
+            this.car.reset();
+            this.ball.reset();
+        }
+    
 
 
         // PART 5: CAR-BALL COLLISIONS

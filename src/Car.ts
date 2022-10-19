@@ -17,7 +17,7 @@ export class Car extends gfx.BoxMesh
     public velocity: gfx.Vector3;
     public startPosition: gfx.Vector3;
     public size: gfx.Vector3;
-
+    public turnS = 1; 
     constructor(width = 1, height = 1, depth = 1)
     {
         // Call the base class constructor
@@ -51,16 +51,20 @@ export class Car extends gfx.BoxMesh
     {
         // Update the car's velocity (in world coordinates)
         this.velocity.set(0, 0, this.forwardSpeed);
+        this.rotateY(this.turnS);
+        this.velocity.rotate(this.rotation);
 
         // Update the car position based on the velocity
         const translation = gfx.Vector3.multiplyScalar(this.velocity, deltaTime)
         this.position.add(translation);
+        
     }
 
     reset()
-    {
+    {   
         this.position.copy(this.startPosition);
         this.velocity.set(0, 0, 0);
         this.forwardSpeed = 0;
+        
     }
 }

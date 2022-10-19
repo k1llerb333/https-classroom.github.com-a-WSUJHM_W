@@ -56,10 +56,11 @@ export class Ball extends gfx.SphereMesh
     }
 
     reset()
-    {
+    {   
        // Set the initial position so the bottom edge is a meter above the ground
-       this.position.set(0, this.radius/2 + 1, 0);
        
+       this.velocity.add(new gfx.Vector3(Math.random() + 5 ,Math.random()* 5,Math.random()* 5)); 
+       this.position.set(0, this.radius/2 + 1, 0);
        this.shadow.position.y = -this.position.y + 0.005;
     }
 }
